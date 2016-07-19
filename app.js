@@ -19,12 +19,28 @@
 
 $(document).ready(function() {
 	
-	//fetching the input
-		var newItem = $('#shopping-list-entry').val();
+	//Fetching elements from HTML
+	function main() {
+		var form = $("#js-shopping-list-form");
+			form.submit(function(e) {
+				var input = $("#shopping-list-entry").val();
+				$(".shopping-list").append('<li>' + input + '</li>');
+				e.preventDefault();
+			});
+	}
+	main();
+		
+}); 
+/**
+another way to prevent default from function:
 
-		function collectItem () {
-			
-			alert(newItem);
-		}
-	
-});
+function  main() {
+		$("#js-shopping-list-form").submit(function(){
+			var input = $(this).find('input');
+			alert(input.val());
+		})
+	return false;
+	}
+
+main();
+**/
